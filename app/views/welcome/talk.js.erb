@@ -1,0 +1,40 @@
+(function(){
+  var ready = function(){
+		var connection;
+		$('#token_url').click(function(){
+			var text = $('#token_url').val();
+			window.prompt("こちらをコピーしてください", text);
+		});
+		$('#conference_mute').click(function(){
+			if(connection){
+				connection.mute();
+			}
+		});
+		$('#conference_mute').click(function(){
+			if(connection){
+				connection.unmute();
+			}
+		});
+		$('#conference_leave').click(function(){
+			Twilio.Device.disconnectAll();
+		});
+    $('#conference_start').click(function(){
+      //get token
+      $.ajax({
+        url: '/auth/token',
+        method: 'GET',
+        success: function(token){
+          //enter
+          Twilio.Device.setup(token);
+          Twilio.Device.ready(function(device) {
+            connection = Twilio.Device.connect({
+              room: "<%= @token %>"
+            });
+          });
+        }
+      });
+    });
+  };
+  $(document).ready(ready);
+  $(document).on('page:load', ready);
+})();

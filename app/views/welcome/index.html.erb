@@ -1,0 +1,7 @@
+<div class="jumbotron">
+<% if @room %>
+<%= render 'talk' %>
+<% else %>
+<%= link_to raw('<button class="btn btn-primary"><i class="glyphicon glyphicon-headphones"></i> カンファレンスルームを作成</button>'), '/rooms/', :method => "POST" %>
+<% end %>
+</div>
