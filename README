@@ -1,0 +1,17 @@
+# GroupTalk
+====
+
+Twilio demo app.
+
+## INSTALL
+
+```
+$ git clone https://github.com/yagitoshiro/GroupTalk.git
+$ cd GroupTalk
+$ bundle
+$ cp config/database.yml.sample config/database.yml
+$ cp config/application.yml.sample config/application.yml
+// modify database.yml and application.yml. both are self-explaining
+$ bundle exec rake db:create
+$ bundle exec rake db:migrate
+$ bundle rails s // or do whatever you want to when you start rails app
