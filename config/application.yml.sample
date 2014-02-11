@@ -1,0 +1,15 @@
+production:
+  service_phone: your-twilio-phone-number(050)
+  account_sid: your-account-sid
+  auth_token: your-auth-token
+  app_sid: your-app-sid
+development:
+  service_phone: your-twilio-phone-number(050)
+  account_sid: your-account-sid
+  auth_token: your-auth-token
+  app_sid: your-app-sid
+test:
+  service_phone: your-twilio-phone-number(050)
+  account_sid: your-account-sid
+  auth_token: your-auth-token
+  app_sid: your-app-sid
