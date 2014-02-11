@@ -1,10 +1,15 @@
 require 'uri'
 class WelcomeController < ApplicationController
+	before_filter :set_cache_buster
   def index
 		respond_to do |format|
 		if params[:token]
-			@room = Room.where(:token => params[:token]).first
-			format.html {render :layout => "talk"}
+			@room = Room.active_room(params[:token])
+			if @room
+				format.html {render :layout => "talk"}
+			else
+				redirect_to root_path, :alert => "指定されたカンファレンスルームは存在しないか有効期限が切れています。再度作成してください。"
+			end
 		else
 			format.html
 		end

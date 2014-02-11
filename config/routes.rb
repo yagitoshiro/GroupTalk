@@ -2,6 +2,7 @@ GroupTalk::Application.routes.draw do
   post "talk", :to => "talk#index"
   post "talk/fallback"
   post "talk/status"
+  post "talk/finish"
   get "auth/token"
   resources :rooms
 

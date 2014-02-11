@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140209160129) do
+ActiveRecord::Schema.define(version: 20140210120511) do
 
   create_table "rooms", force: true do |t|
     t.string   "token"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "activation_code"
   end
 
 end
