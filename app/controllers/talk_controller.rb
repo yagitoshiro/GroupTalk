@@ -23,8 +23,8 @@ class TalkController < ApplicationController
 			end
 		elsif params[:To] == parse_phone_number(Settings.service_phone)
 			xml = Twilio::TwiML::Response.new do |r|
-				r.Gather :numDigits => 6, :action => "/talk" do |g|
-					g.Say "6桁の確認コードを入力してください。", :language => 'ja-JP'
+				r.Gather :numDigits => Settings.activation_code_digits, :action => "/talk" do |g|
+					g.Say "#{Settings.activation_code_digits}桁の確認コードを入力してください。", :language => 'ja-JP'
 				end
 			end.text
 		else
