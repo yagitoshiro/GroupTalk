@@ -1,5 +1,6 @@
 class TalkController < ApplicationController
   skip_before_filter :verify_authenticity_token
+	before_filter:validate_request
   include PhoneUtils
   def index
     if params[:room]
@@ -48,4 +49,9 @@ class TalkController < ApplicationController
       # delete
     end
   end
+
+	def validate_request
+		@validator = Twilio::Util::RequestValidator.new Settings.auth_token
+		@validator.validate(request.url, params.except(:action, :controller), request.headers['X-Twilio-Signature'])
+	end
 end
